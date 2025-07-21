@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, Phone, Github, Linkedin, MapPin, Send } from "lucide-react"
 import Link from "next/link"
+import toast from "react-hot-toast"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -16,11 +17,47 @@ export function ContactSection() {
     message: ""
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
-    // You can integrate with a form service like Formspree, Netlify Forms, etc.
+    setIsSubmitting(true)
+
+    try {
+      // Create mailto link with form data
+      const subject = encodeURIComponent(formData.subject)
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )
+      const mailtoLink = `mailto:lm_amor@esi.dz?subject=${subject}&body=${body}`
+      
+      // Open email client
+      window.location.href = mailtoLink
+      
+      // Show success toast
+      toast.success('Email client opened! Please send the email from your default email app.', {
+        duration: 5000,
+        icon: '📧',
+      })
+      
+      // Reset form after a delay
+      setTimeout(() => {
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: ""
+        })
+      }, 2000)
+
+    } catch (error) {
+      toast.error('Failed to open email client. Please contact me directly at lm_amor@esi.dz', {
+        duration: 6000,
+        icon: '❌',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -169,9 +206,14 @@ export function ContactSection() {
                     />
                   </div>
                   
-                  <Button type="submit" size="lg" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-50"
+                  >
                     <Send className="mr-2 h-5 w-5" />
-                    Send Message
+                    {isSubmitting ? 'Opening Email Client...' : 'Send Message'}
                   </Button>
                 </form>
               </CardContent>
