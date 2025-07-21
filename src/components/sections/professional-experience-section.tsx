@@ -27,9 +27,9 @@ const experiences: Experience[] = [
   },
   {
     title: "Project Leader",
-    company: "ESI Cup Fantasy Platform",
+    company: "ESI Cup Fantasy @ Sport & Entertainment Club",
     period: "2024–2025",
-    type: "Academic Project",
+    type: "Professional",
     responsibilities: [
       "Microservice-based real-time fantasy football platform",
       "500+ active users",
@@ -44,7 +44,7 @@ const experiences: Experience[] = [
     type: "Academic Project",
     responsibilities: [
       "Designed complete system architecture",
-      "Led RFP (Request for Proposal) process",
+      "Participated in RFP (Request for Proposal) process",
       "Created comprehensive technical documentation"
     ],
     highlights: ["System Design", "Architecture", "Documentation"]
@@ -56,7 +56,7 @@ const experiences: Experience[] = [
     type: "Project",
     responsibilities: [
       "Google Maps API integration",
-      "Full CRUD booking system",
+      "Built full-stack SaaS booking system",
       "User management & authentication"
     ],
     highlights: ["Maps API", "CRUD System", "Authentication"]

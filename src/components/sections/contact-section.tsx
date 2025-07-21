@@ -23,35 +23,51 @@ export function ContactSection() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    try {
-      // Create mailto link with form data
-      const subject = encodeURIComponent(formData.subject)
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )
-      const mailtoLink = `mailto:lm_amor@esi.dz?subject=${subject}&body=${body}`
-      
-      // Open email client
-      window.location.href = mailtoLink
-      
-      // Show success toast
-      toast.success('Email client opened! Please send the email from your default email app.', {
-        duration: 5000,
-        icon: '📧',
+    // Check if access key is configured
+    if (!process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY) {
+      toast.error('Email service not configured. Please check your environment variables.', {
+        duration: 6000,
+        icon: '⚠️',
       })
-      
-      // Reset form after a delay
-      setTimeout(() => {
+      setIsSubmitting(false)
+      return
+    }
+
+    try {
+      // Using Web3Forms - free service, no signup needed for basic usage
+      const submitData = new FormData()
+      submitData.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '')
+      submitData.append('name', formData.name)
+      submitData.append('email', formData.email)
+      submitData.append('subject', `Portfolio Contact: ${formData.subject}`)
+      submitData.append('message', formData.message)
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: submitData
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        toast.success('Message sent successfully! I&apos;ll get back to you soon.', {
+          duration: 5000,
+          icon: '✅',
+        })
+        
+        // Reset form
         setFormData({
           name: "",
           email: "",
           subject: "",
           message: ""
         })
-      }, 2000)
+      } else {
+        throw new Error('Failed to send message')
+      }
 
     } catch (error) {
-      toast.error('Failed to open email client. Please contact me directly at lm_amor@esi.dz', {
+      toast.error('Failed to send message. Please contact me directly at lm_amor@esi.dz', {
         duration: 6000,
         icon: '❌',
       })
@@ -213,7 +229,7 @@ export function ContactSection() {
                     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-50"
                   >
                     <Send className="mr-2 h-5 w-5" />
-                    {isSubmitting ? 'Opening Email Client...' : 'Send Message'}
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
               </CardContent>

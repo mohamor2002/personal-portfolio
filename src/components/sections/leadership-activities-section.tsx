@@ -11,6 +11,7 @@ interface Activity {
   period?: string
   icon: "users" | "target" | "book"
   highlights: string[]
+  isAlumni?: boolean
 }
 
 const activities: Activity[] = [
@@ -22,7 +23,8 @@ const activities: Activity[] = [
     impact: "Organized 12+ events with 500+ total attendees",
     period: "2023-2025",
     icon: "target",
-    highlights: ["12+ Events", "500+ Attendees", "Leadership", "Event Management"]
+    highlights: ["12+ Events", "500+ Attendees", "Leadership", "Event Management"],
+    isAlumni: true
   },
   {
     title: "GDG Algiers",
@@ -30,7 +32,7 @@ const activities: Activity[] = [
     role: "Contributor",
     description: "Actively contributed to the developer community through workshops, knowledge sharing, and technical presentations.",
     impact: "Led 5+ workshops on web development topics",
-    period: "2023-Present",
+    period: "2023-present",
     icon: "book",
     highlights: ["5+ Workshops", "Web Development", "Community", "Knowledge Sharing"]
   }
@@ -70,6 +72,11 @@ export function LeadershipActivitiesSection() {
                         <Badge variant="default" className="text-xs">
                           {activity.role}
                         </Badge>
+                        {activity.isAlumni && (
+                          <Badge variant="secondary" className="text-xs bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
+                            Alumni
+                          </Badge>
+                        )}
                         {activity.period && (
                           <div className="flex items-center gap-1 text-xs text-muted-foreground">
                             <Calendar className="h-3 w-3" />
@@ -121,24 +128,19 @@ export function LeadershipActivitiesSection() {
                 </div>
                 <h3 className="text-xl font-bold mb-4">Leadership Philosophy</h3>
                 <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                  I believe in leading by example, fostering collaborative environments, and empowering others to reach their full potential. 
-                  My experience in both technical leadership and community building has taught me the value of clear communication, 
-                  active listening, and inclusive decision-making.
+                  I believe effective leadership starts with listening and learning from others. Through community involvement and collaborative projects, 
+                  I&apos;ve discovered that the best outcomes emerge when diverse voices contribute to shared goals. 
+                  My role is to facilitate connections, support team members&apos; growth, and help create inclusive spaces where everyone can contribute meaningfully.
                 </p>
                 <div className="flex justify-center gap-8 mt-6 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary">17+</div>
-                    <div className="text-sm text-muted-foreground">Events Organized</div>
-                  </div>
-                  <div className="w-px h-12 bg-border" />
-                  <div>
-                    <div className="text-2xl font-bold text-primary">500+</div>
-                    <div className="text-sm text-muted-foreground">People Impacted</div>
+                    <div className="text-sm text-muted-foreground">Collaborative Events</div>
                   </div>
                   <div className="w-px h-12 bg-border" />
                   <div>
                     <div className="text-2xl font-bold text-primary">2+</div>
-                    <div className="text-sm text-muted-foreground">Years Active</div>
+                    <div className="text-sm text-muted-foreground">Years Learning</div>
                   </div>
                 </div>
               </CardContent>

@@ -18,7 +18,7 @@ const achievements: Achievement[] = [
     event: "Google Developer Festival",
     year: "2024",
     position: "1st Place",
-    description: "Network optimizer using Docker + RL",
+    description: "Network bandwidth optimizer using Docker + RL",
     icon: "trophy",
     category: "Hackathon"
   },
@@ -27,16 +27,16 @@ const achievements: Achievement[] = [
     event: "Computer Science Engineering Contest",
     year: "2025",
     position: "Winner",
-    description: "Solved 6 algorithmic challenges (Python, C++)",
+    description: "Solved algorithmic challenges (Python, C++)",
     icon: "trophy",
     category: "Programming"
   },
   {
-    title: "School of AI Datathon 2023",
+    title: "School of AI Ideathon 2023",
     event: "Data Science Competition",
     year: "2023",
     position: "Winner",
-    description: "Data science pipelines with ML & DL",
+    description: "Data science concepts with ML & DL",
     icon: "trophy",
     category: "AI/ML"
   }
@@ -123,7 +123,7 @@ export function AchievementsSection() {
               <div className="w-px h-12 bg-border" />
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">3</div>
-                <div className="text-sm text-muted-foreground">First Places</div>
+                <div className="text-sm text-muted-foreground">Winner Spots</div>
               </div>
               <div className="w-px h-12 bg-border" />
               <div className="text-center">

@@ -30,7 +30,7 @@ const projects: Project[] = [
   {
     name: "FMN",
     description: "Full-Stack Web Application",
-    detailedDescription: "Comprehensive web application demonstrating modern full-stack development practices with responsive design.",
+    detailedDescription: "Full-stack Movie library application built with React and Firebase, featuring user authentication and movie management.",
     stack: ["React", "Node.js", "Express", "MongoDB"],
     role: "Full-Stack",
     category: "Web App",
