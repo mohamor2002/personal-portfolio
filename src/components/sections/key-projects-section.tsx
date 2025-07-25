@@ -17,6 +17,27 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "WidadScript Compiler (wsc)",
+    description: "Minimal TypeScript compiler for the WidadScript toy language. Supports print, variables, and conditionals.",
+    detailedDescription: "Run .ws files with print, variables, and if/else logic. Cross-platform CLI. See GitHub for details.",
+    stack: ["TypeScript", "Node.js"],
+    role: "Solo",
+    category: "Compiler",
+    githubUrl: "https://github.com/mohamor2002/wsc",
+    featured: true
+  },
+  {
+    name: "WidadScript Web IDE",
+    description: "Online IDE for WidadScript with Monaco Editor and real-time output.",
+    detailedDescription: "Code, run, and manage WidadScript online. Monaco Editor, terminal, and authentication. Try the live demo!",
+    stack: ["Next.js", "TypeScript"],
+    role: "Solo",
+    category: "Web IDE",
+    liveUrl: "https://widadscript-ide.vercel.app/",
+    githubUrl: "https://github.com/mohamor2002/ws-ide",
+    featured: true
+  },
+  {
     name: "SciPaper",
     description: "NLP + Elasticsearch semantic search engine",
     detailedDescription: "Scientific paper search engine using natural language processing and Elasticsearch for semantic search capabilities.",

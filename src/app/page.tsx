@@ -6,6 +6,7 @@ import { TechnicalSkillsSection } from "@/components/sections/technical-skills-s
 import { ProfessionalExperienceSection } from "@/components/sections/professional-experience-section"
 import { KeyProjectsSection } from "@/components/sections/key-projects-section"
 import { AchievementsSection } from "@/components/sections/achievements-section"
+import { CertificatesSection } from "@/components/sections/certificates-section"
 import { LeadershipActivitiesSection } from "@/components/sections/leadership-activities-section"
 import { ServicesSection } from "@/components/sections/services-section"
 import { ContactSection } from "@/components/sections/contact-section"
@@ -23,6 +24,7 @@ export default function Home() {
         <ProfessionalExperienceSection />
         <KeyProjectsSection />
         <AchievementsSection />
+        <CertificatesSection />
         <LeadershipActivitiesSection />
         <ServicesSection />
         <ContactSection />
