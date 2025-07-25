@@ -11,10 +11,20 @@ const certificates = [
     title: "JavaScript Algorithms & Data Structures",
     provider: "freeCodeCamp",
     abb: "FCC",
-    date: "July 2025",
+    date: "2025",
     type: "Certification",
     logo: null,
     url: "https://www.freecodecamp.org/certification/mohamor2002/javascript-algorithms-and-data-structures",
+    color: "blue"
+  },
+  {
+    title: "Responsive Web Design",
+    provider: "freeCodeCamp",
+    abb: "FCC",
+    date: "2025",
+    type: "Certification",
+    logo: null,
+    url: "https://www.freecodecamp.org/certification/mohamor2002/responsive-web-design",
     color: "blue"
   },
   {
@@ -31,7 +41,7 @@ const certificates = [
         title: "Supervised Learning with scikit-learn",
         provider: "DataCamp",
         abb: "DC",
-        date: "2023",
+        date: "2022",
         type: "Course Completion",
         logo: null,
         url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/0d0817a698d271a4d67b1e210e9dcb5160f49db7",
