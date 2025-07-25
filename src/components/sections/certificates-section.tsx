@@ -1,45 +1,100 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { CardHeader } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { ExternalLink } from "lucide-react"
 import Link from "next/link"
+
+const certificates = [
+  {
+    title: "JavaScript Algorithms & Data Structures",
+    provider: "freeCodeCamp",
+    abb: "FCC",
+    date: "July 2025",
+    type: "Certification",
+    logo: null,
+    url: "https://www.freecodecamp.org/certification/mohamor2002/javascript-algorithms-and-data-structures",
+    color: "blue"
+  },
+  {
+    title: "Introduction to GitHub Concepts",
+    provider: "DataCamp",
+    abb: "DC",
+    date: "2022",
+    type: "Course Completion",
+    logo: null,
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/a9ffc97212f45f791493071462acc3115b576c60",
+    color: "green"
+  },
+    {
+        title: "Supervised Learning with scikit-learn",
+        provider: "DataCamp",
+        abb: "DC",
+        date: "2023",
+        type: "Course Completion",
+        logo: null,
+        url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/0d0817a698d271a4d67b1e210e9dcb5160f49db7",
+        color: "green"
+    }
+]
 
 export function CertificatesSection() {
   return (
     <section id="certificates" className="py-20 bg-muted/30">
       <div className="container px-4 mx-auto">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Certificates</h2>
-          <div className="grid gap-8 justify-center">
-            <Card className="border-none shadow-2xl ring-2 ring-blue-400/30 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20">
-              <CardHeader className="pb-0 flex flex-col items-center">
-                <img src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg" alt="freeCodeCamp Logo" className="h-16 w-16 rounded-full border-2 border-blue-400 bg-white mb-2" />
-                <span className="text-lg font-bold text-blue-700 dark:text-blue-300 mb-1">freeCodeCamp</span>
-                <span className="text-xs text-muted-foreground mb-2">Credential ID: mohamor2002</span>
-              </CardHeader>
-              <CardContent className="pt-0 pb-8 flex flex-col items-center">
-                <h3 className="text-2xl md:text-3xl font-bold mb-2 text-center text-gray-900 dark:text-white">JavaScript Algorithms and Data Structures</h3>
-                <span className="text-sm text-muted-foreground mb-4">Issued July 2025 · Online, Self-paced</span>
-                <ul className="text-left text-sm md:text-base text-muted-foreground mb-6 max-w-lg mx-auto list-disc pl-5">
-                  <li>400+ hours of hands-on coding and algorithm practice</li>
-                  <li>Mastered ES6+, functional programming, recursion, and data structures</li>
-                  <li>Built and debugged real-world JavaScript projects</li>
-                  <li>Covered topics: Arrays, Objects, Functions, OOP, Algorithms, Regex, JSON, and more</li>
-                  <li>Final exam and project submission required for certification</li>
-                </ul>
-                <Link
-                  href="https://www.freecodecamp.org/certification/mohamor2002/javascript-algorithms-and-data-structures"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700 transition-colors text-base mt-2"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                  View Certificate
-                </Link>
-              </CardContent>
-            </Card>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Certificates</h2>
+          
+          <div className="space-y-6">
+            {certificates.map((cert, index) => (
+              <Card key={index} className="hover:shadow-md transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                        cert.color === 'blue' 
+                          ? 'bg-blue-50 border border-blue-200 dark:bg-blue-900/20 dark:border-blue-800' 
+                          : 'bg-green-50 border border-green-200 dark:bg-green-900/20 dark:border-green-800'
+                      }`}>
+                        {cert.logo ? (
+                          <img src={cert.logo} alt={cert.provider} className="w-8 h-8" />
+                        ) : (
+                          <span className={`font-bold text-sm ${
+                            cert.color === 'green' ? 'text-green-700 dark:text-green-400' : 'text-blue-700 dark:text-blue-400'
+                          }`}>
+                            {cert.abb || cert.provider.split(' ').map(word => word[0]).join('').toUpperCase()}
+                          </span>
+                        )}
+                      </div>
+                      
+                      <div>
+                        <h3 className="font-semibold text-lg mb-1">{cert.title}</h3>
+                        <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                          <span>{cert.provider}</span>
+                          <span>•</span>
+                          <span>{cert.date}</span>
+                          <span>•</span>
+                          <span>{cert.type}</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-3">
+                      <Badge variant="outline" className="text-xs">
+                        Verified
+                      </Badge>
+                      <Button asChild variant="outline" size="sm">
+                        <Link href={cert.url} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          View
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </div>

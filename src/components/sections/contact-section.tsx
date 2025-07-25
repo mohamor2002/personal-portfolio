@@ -226,7 +226,7 @@ export function ContactSection() {
                     type="submit" 
                     size="lg" 
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-50"
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed text-white"
                   >
                     <Send className="mr-2 h-5 w-5" />
                     {isSubmitting ? 'Sending...' : 'Send Message'}

@@ -84,7 +84,7 @@ export function TechnicalSkillsSection() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {Object.entries(skillCategories).map(([category, skills]) => (
-              <Card key={category} className="h-fit">
+              <Card key={category} className="h-full">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-lg text-primary">{category}</CardTitle>
                 </CardHeader>

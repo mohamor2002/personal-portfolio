@@ -31,7 +31,7 @@ const activities: Activity[] = [
     organization: "Google Developer Groups",
     role: "Contributor",
     description: "Actively contributed to the developer community through workshops, knowledge sharing, and technical presentations.",
-    impact: "Led 5+ workshops on web development topics",
+    impact: "Contributed in 5+ workshops on web development topics",
     period: "2023-present",
     icon: "book",
     highlights: ["5+ Workshops", "Web Development", "Community", "Knowledge Sharing"]
@@ -134,12 +134,12 @@ export function LeadershipActivitiesSection() {
                 </p>
                 <div className="flex justify-center gap-8 mt-6 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-primary">17+</div>
+                    <div className="text-2xl font-bold text-primary">20+</div>
                     <div className="text-sm text-muted-foreground">Collaborative Events</div>
                   </div>
                   <div className="w-px h-12 bg-border" />
                   <div>
-                    <div className="text-2xl font-bold text-primary">2+</div>
+                    <div className="text-2xl font-bold text-primary">4+</div>
                     <div className="text-sm text-muted-foreground">Years Learning</div>
                   </div>
                 </div>

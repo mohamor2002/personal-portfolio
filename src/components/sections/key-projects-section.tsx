@@ -1,7 +1,11 @@
+"use client"
+
+import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github } from "lucide-react"
+import { ChevronDown, ChevronUp, ExternalLink, Github } from "lucide-react"
+import "@/app/globals.css"
 
 interface Project {
   name: string
@@ -18,8 +22,8 @@ interface Project {
 const projects: Project[] = [
   {
     name: "WidadScript Compiler (wsc)",
-    description: "Minimal TypeScript compiler for the WidadScript toy language. Supports print, variables, and conditionals.",
-    detailedDescription: "Run .ws files with print, variables, and if/else logic. Cross-platform CLI. See GitHub for details.",
+    description: "From-scratch compiler for WidadScript, built in TypeScript.",
+    detailedDescription: "Custom lexer, parser, and interpreter for a toy language. Supports variables, arithmetic, print, and conditionals. Cross-platform CLI.",
     stack: ["TypeScript", "Node.js"],
     role: "Solo",
     category: "Compiler",
@@ -28,8 +32,8 @@ const projects: Project[] = [
   },
   {
     name: "WidadScript Web IDE",
-    description: "Online IDE for WidadScript with Monaco Editor and real-time output.",
-    detailedDescription: "Code, run, and manage WidadScript online. Monaco Editor, terminal, and authentication. Try the live demo!",
+    description: "Online IDE for WidadScript with Monaco Editor and instant execution.",
+    detailedDescription: "Write and run WidadScript in the browser. Monaco Editor, terminal, authentication, and file management. Try the live demo!",
     stack: ["Next.js", "TypeScript"],
     role: "Solo",
     category: "Web IDE",
@@ -49,7 +53,7 @@ const projects: Project[] = [
     featured: true
   },
   {
-    name: "FMN",
+    name: "Friday Movie Night",
     description: "Full-Stack Web Application",
     detailedDescription: "Full-stack Movie library application built with React and Firebase, featuring user authentication and movie management.",
     stack: ["React", "Node.js", "Express", "MongoDB"],
@@ -97,6 +101,16 @@ const projects: Project[] = [
 ]
 
 export function KeyProjectsSection() {
+  const [expanded, setExpanded] = useState(false)
+  
+  // Show only first 6 projects if not expanded
+  const displayedProjects = expanded ? projects : projects.slice(0, 3)
+
+  // Restore original expand/collapse logic
+  const handleExpandToggle = () => {
+    setExpanded((prev) => !prev)
+  }
+
   return (
     <section id="projects" className="py-20 bg-muted/30">
       <div className="container px-4 mx-auto overflow-x-hidden">
@@ -104,7 +118,7 @@ export function KeyProjectsSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Key Projects</h2>
           
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
+            {displayedProjects.map((project, index) => (
               <Card 
                 key={index} 
                 className={`h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${
@@ -132,12 +146,10 @@ export function KeyProjectsSection() {
                     </div>
                   </div>
                 </CardHeader>
-                
                 <CardContent>
                   <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                     {project.detailedDescription}
                   </p>
-                  
                   <div className="space-y-4">
                     <div>
                       <p className="text-sm font-medium mb-2">Tech Stack:</p>
@@ -153,7 +165,6 @@ export function KeyProjectsSection() {
                         ))}
                       </div>
                     </div>
-                    
                     {(project.liveUrl || project.githubUrl) && (
                       <div className="flex gap-2 pt-2">
                         {project.liveUrl && (
@@ -178,6 +189,22 @@ export function KeyProjectsSection() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Expand / Collapse button */}
+          <div className="flex justify-center mt-8">
+            <Button
+              variant="outline"
+              onClick={handleExpandToggle}
+              className="flex items-center gap-2 animate-pulse hover:animate-none cursor-pointer"
+            >
+              {expanded ? "Show Less" : "Show More"}
+              {expanded ? (
+                <ChevronUp className="w-4 h-4" />
+              ) : (
+                <ChevronDown className="w-4 h-4" />
+              )}
+            </Button>
           </div>
         </div>
       </div>

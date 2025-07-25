@@ -65,7 +65,7 @@ export function Navbar() {
                 key={item.name}
                 variant="ghost"
                 onClick={() => scrollToSection(item.href)}
-                className="relative group"
+                className="relative group cursor-pointer"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
@@ -81,8 +81,8 @@ export function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden cursor-pointer"
             >
               {isMobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -102,7 +102,7 @@ export function Navbar() {
                   key={item.name}
                   variant="ghost"
                   onClick={() => scrollToSection(item.href)}
-                  className="w-full justify-start text-left"
+                  className="w-full justify-start text-left cursor-pointer"
                 >
                   {item.name}
                 </Button>
